@@ -1,0 +1,21 @@
+// This is your Prisma schema file
+// Learn more: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"       // Use PostgreSQL
+  url      = env("DATABASE_URL") // Read from .env
+}
+
+model Book {
+  id          Int      @id @default(autoincrement())
+  title       String
+  author      String
+  price       Float     // Use Float for numeric calculations
+  genre       String
+  publishedAt DateTime
+  createdAt   DateTime @default(now())
+}
