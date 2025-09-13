@@ -84,7 +84,9 @@ export default function BookList() {
               <div>
                 <b className="text-blue-700">{b.title}</b>{" "}
                 <span className="text-gray-600">
-                  by {b.author} (${b.price})
+                  by {b.author} purches book of (₹{b.price})
+                  <br></br>
+                at time {b.publishedAt}
                 </span>
               </div>
               <div className="flex gap-2">
