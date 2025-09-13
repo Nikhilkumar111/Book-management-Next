@@ -4,6 +4,10 @@ import { prisma } from "@/lib/prisma";
 import { bookSchema } from "@/schemas/book";
 
 // GET all books
+// very easy crud operations will be performed in this 
+// next js and prisma combination 
+
+
 export async function GET() {
   try {
     const books = await prisma.book.findMany();

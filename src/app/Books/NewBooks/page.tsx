@@ -15,7 +15,7 @@ export default function ManageBooks() {
 
   const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
-    const payload = {
+    const product = {
       ...form,
       price: Number(form.price),
       publishedAt: form.publishedAt || undefined,
@@ -25,17 +25,24 @@ export default function ManageBooks() {
       const res = await fetch("/api/books", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(product),
       });
+      // after fetching the complete data wait using await keyword 
+
       const data = await res.json();
-      if (!res.ok) setErrors(data.errors || { general: data.error });
-      else {
+      //error and set error useState used for this 
+      if (!res.ok) {
+ setErrors(data.errors || { general: data.error });
+      }else {
         setSuccessMsg("Book added successfully!");
         setErrors(null);
         setForm({ title: "", author: "", price: "", genre: "", publishedAt: "" });
         setTimeout(() => setSuccessMsg(null), 2000);
       }
-    } catch (err) {
+
+    } 
+    catch (err) {
+     
       console.error(err);
     }
   };
